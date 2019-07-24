@@ -1167,10 +1167,12 @@ input, select, textarea {
 				height: 6em;
 				margin-top: -3em;
 				background-image: url("images/arrow.svg");
-				background-position: center;
+				background-position: center !important; 
 				background-repeat: no-repeat;
 				background-size: contain;
 				cursor: pointer;
+				background-position-x :center !important;
+				background-position-y :center !important;
 			}
 
 			#viewer .inner .nav-previous {
@@ -1229,6 +1231,8 @@ input, select, textarea {
 				height: 100%;
 				background-repeat: no-repeat;
 				background-size: contain;
+				background-position-x :center !important;
+				background-position-y :center !important;
 				opacity: 0;
 			}
 
@@ -1252,6 +1256,8 @@ input, select, textarea {
 				background-position: center;
 				background-repeat: no-repeat;
 				background-size: contain;
+				background-position-x :center !important;
+				background-position-y :center !important;
 				margin: -1.5em 0 0 -1.5em;
 				opacity: 0;
 			}
