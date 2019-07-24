@@ -34,6 +34,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-camera:before {
+	content: "\e90f";
+}
+.icon-video-camera:before {
+	content: "\e914";
+}
+.icon-aperture:before {
+	content: "\e900";
+}
+.icon-facebook:before {
+	content: "\e902";
+}
+.icon-instagram1:before {
+	content: "\e904";
+}
+.icon-location:before {
+	content: "\e947";
+}
 .icon-envelope:before {
 	content: "\f003";
 }
@@ -42,36 +60,6 @@
 }
 .icon-pinterest:before {
 	content: "\f0d3";
-}
-.icon-inr:before {
-	content: "\f156";
-}
-.icon-aperture:before {
-	content: "\e900";
-}
-.icon-book-open:before {
-	content: "\e901";
-}
-.icon-facebook:before {
-	content: "\e902";
-}
-.icon-image:before {
-	content: "\e903";
-}
-.icon-instagram1:before {
-	content: "\e904";
-}
-.icon-linkedin:before {
-	content: "\e905";
-}
-.icon-send:before {
-	content: "\e906";
-}
-.icon-twitter:before {
-	content: "\e908";
-}
-.icon-location:before {
-	content: "\e947";
 }
 
 
