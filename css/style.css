@@ -34,6 +34,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+
+.icon-whatsapp:before {
+	content: "\f232";
+}
+
 .icon-camera:before {
 	content: "\e90f";
 }
