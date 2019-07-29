@@ -1,17 +1,13 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
-@font-face {
-	font-family: 'pattayaregular';
-	src: url('../fonts/pattaya-regular-webfont.woff2') format('woff2'),
-			 url('../fonts/pattaya-regular-webfont.woff') format('woff');
-	font-weight: normal;
-	font-style: normal
-}
+
 /*
 	Lens by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
+
+
 
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -374,6 +370,13 @@ input, select, textarea {
 		.button:disabled {
 			pointer-events: none;
 			opacity: 0.25;
+		}
+
+		button.mybutton{
+			position:absolute;
+			right:50%;
+			bottom:50%;
+			z-index: 12;
 		}
 
 /* Form */

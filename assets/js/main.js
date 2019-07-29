@@ -413,7 +413,8 @@ var main = (function($) { var _ = {
 							$slideImage: null,
 							$slideCaption: null,
 							url: $thumbnail.attr('href'),
-							loaded: false
+							loaded: false,
+							video:false
 						};
 
 					// Parent.
@@ -422,16 +423,24 @@ var main = (function($) { var _ = {
 					// Slide.
 
 						// Create elements.
-	 						s.$slide = $('<div class="slide"><div class="caption"></div><div class="image"></div></div>');
+						if($($this).hasClass("video")==true){
+							s.$slide = $('<div class="slide"><div class="caption"></div><vid></vid></div>');
+							s.video = true;							
+						}
+						else{
+							s.$slide = $('<div class="slide"><div class="caption"></div><div class="image"></div></div>');
+							s.video=false;
+							s.$slideImage = s.$slide.children('.image');
+
+							// Set background stuff.
+								s.$slideImage
+									.css('background-image', '')
+									.css('background-position', ($thumbnail.data('position') || 'center'));
+						}
+	 						
 
 	 					// Image.
- 							s.$slideImage = s.$slide.children('.image');
-
- 							// Set background stuff.
-	 							s.$slideImage
-		 							.css('background-image', '')
-		 							.css('background-position', ($thumbnail.data('position') || 'center'));
-
+ 						
 						// Caption.
 							s.$slideCaption = s.$slide.find('.caption');
 
@@ -441,7 +450,6 @@ var main = (function($) { var _ = {
 
 					// Preload?
 						if (_.settings.preload) {
-
 							// Force image to download.
 								var $img = $('<img src="' + s.url + '" />');
 
@@ -562,30 +570,50 @@ var main = (function($) { var _ = {
 									newSlide.$slide.addClass('loading');
 
 								// Wait for it to load.
-									$('<img src="' + newSlide.url + '" />').on('load', function() {
-									//window.setTimeout(function() {
-
-										// Set background image.
-											newSlide.$slideImage
-												.css('background-image', 'url(' + newSlide.url + ')');
-
-										// Mark as loaded.
-											newSlide.loaded = true;
-											newSlide.$slide.removeClass('loading');
-
-										// Mark as active.
-											newSlide.$slide.addClass('active');
-
-										// Unlock.
-											window.setTimeout(function() {
-												_.locked = false;
-											}, 100);
-
-									//}, 1000);
-									});
-
+									if(newSlide.video){
+						
+												// Set background image.
+												$("vid").before('<video onclick="playVid()" id="myVideo" class="image" autoplay muted loop><source src="' + newSlide.url + '" type="video/mp4"></video>');
+												// Mark as loaded.
+													newSlide.loaded = true;
+													newSlide.$slide.removeClass('loading');
+													
+												// Mark as active.
+													newSlide.$slide.addClass('active');
+		
+												// Unlock.
+													window.setTimeout(function() {
+														_.locked = false;
+													}, 100);
+													
+											//}, 1000);
+										
+									}
+									else{
+										
+										$('<img src="' + newSlide.url + '" />').on('load', function() {
+											//window.setTimeout(function() {
+												
+												// Set background image.
+													newSlide.$slideImage
+														.css('background-image', 'url(' + newSlide.url + ')');
+		
+												// Mark as loaded.
+													newSlide.loaded = true;
+													newSlide.$slide.removeClass('loading');
+		
+												// Mark as active.
+													newSlide.$slide.addClass('active');
+		
+												// Unlock.
+													window.setTimeout(function() {
+														_.locked = false;
+													}, 100);
+												
+											//}, 1000);
+											});	
+									}
 							}, 100);
-
 						}
 
 					// Otherwise ...
@@ -742,5 +770,10 @@ var main = (function($) { var _ = {
 			_.hide();
 
 	},
+ 
 
 }; return _; })(jQuery); main.init();
+
+function playVid() { 
+	document.getElementById("myVideo").play();
+}
